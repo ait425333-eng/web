@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 
@@ -13,28 +14,35 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-amber-800 rounded-full flex items-center justify-center text-white font-bold text-lg">
-              IM
+            <div className="relative h-12 w-12 sm:h-14 sm:w-14">
+              <Image
+                src="/insaf/logo.jpg"
+                alt="INSAF Mining and Mineral Logo"
+                fill
+                className="object-contain"
+                sizes="(max-width: 640px) 48px, 56px"
+                priority
+              />
             </div>
             <span className="font-bold text-gray-900 hidden sm:inline">INSAF</span>
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="#about" className="text-sm font-medium text-gray-700 hover:text-amber-800 transition">
+          <nav className="hidden md:flex items-center gap-6">
+            <Link href="#about-us" className="text-sm font-medium text-gray-700 hover:text-amber-800 transition">
               ABOUT US
+            </Link>
+            <Link href="#founders-message" className="text-sm font-medium text-gray-700 hover:text-amber-800 transition">
+              FOUNDER'S MESSAGE
+            </Link>
+            <Link href="#vision" className="text-sm font-medium text-gray-700 hover:text-amber-800 transition">
+              OUR VISION
             </Link>
             <Link href="#sustainability" className="text-sm font-medium text-gray-700 hover:text-amber-800 transition">
               SUSTAINABILITY
             </Link>
             <Link href="#projects" className="text-sm font-medium text-gray-700 hover:text-amber-800 transition">
               PROJECTS
-            </Link>
-            <Link href="#careers" className="text-sm font-medium text-gray-700 hover:text-amber-800 transition">
-              CAREERS
-            </Link>
-            <Link href="#tender" className="text-sm font-medium text-gray-700 hover:text-amber-800 transition">
-              TENDER
             </Link>
           </nav>
 
@@ -57,8 +65,14 @@ export function Header() {
         {/* Mobile Menu */}
         {isOpen && (
           <nav className="md:hidden pb-4 space-y-2">
-            <Link href="#about" className="block px-2 py-2 text-sm font-medium text-gray-700 hover:text-amber-800">
+            <Link href="#about-us" className="block px-2 py-2 text-sm font-medium text-gray-700 hover:text-amber-800">
               ABOUT US
+            </Link>
+            <Link href="#founders-message" className="block px-2 py-2 text-sm font-medium text-gray-700 hover:text-amber-800">
+              FOUNDER'S MESSAGE
+            </Link>
+            <Link href="#vision" className="block px-2 py-2 text-sm font-medium text-gray-700 hover:text-amber-800">
+              OUR VISION
             </Link>
             <Link
               href="#sustainability"
@@ -68,12 +82,6 @@ export function Header() {
             </Link>
             <Link href="#projects" className="block px-2 py-2 text-sm font-medium text-gray-700 hover:text-amber-800">
               PROJECTS
-            </Link>
-            <Link href="#careers" className="block px-2 py-2 text-sm font-medium text-gray-700 hover:text-amber-800">
-              CAREERS
-            </Link>
-            <Link href="#tender" className="block px-2 py-2 text-sm font-medium text-gray-700 hover:text-amber-800">
-              TENDER
             </Link>
             <Link href="/media" className="block px-2 py-2 text-sm text-gray-600 hover:text-amber-800">
               Media
