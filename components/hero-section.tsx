@@ -1,14 +1,47 @@
+"use client"
+
+import { useState, useEffect } from "react"
+
 export function HeroSection() {
+  const images = [
+    "/insaf/s1.jpeg",
+    "/insaf/s2.jpeg",
+    "/insaf/s3.jpeg",
+    "/insaf/s4.jpeg",
+    "/insaf/s5.jpeg",
+    "/insaf/s6.jpeg",
+    "/insaf/s7.jpeg",
+    "/insaf/s8.jpeg",
+    "/insaf/s9.jpeg",
+  ]
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+    }, 5000) // Change image every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [images.length])
+
   return (
     <div className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url(/placeholder.svg?height=1080&width=1920&query=mining-quarry-excavation)",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40" />
+      {/* Background Images with fade transition */}
+      <div className="absolute inset-0">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
+            }`}
+            style={{
+              backgroundImage: `url(${image})`,
+            }}
+          >
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
+        ))}
       </div>
 
       {/* Content */}
@@ -32,7 +65,7 @@ export function HeroSection() {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4">
               <div className="bg-white/10 backdrop-blur rounded-lg overflow-hidden">
-                <img src="/ruby-gemstone.jpg" alt="Ruby" className="w-full h-48 object-cover" />
+                <img src="/c1.jpg" alt="Mineral Specimen" className="w-full h-48 object-cover" />
               </div>
             </div>
             <div className="space-y-4 pt-8">

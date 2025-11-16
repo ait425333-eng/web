@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 export function Footer() {
   return (
@@ -8,8 +9,14 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-amber-800 rounded-full flex items-center justify-center text-white font-bold">
-                IM
+              <div className="relative h-12 w-12">
+                <Image
+                  src="/insaf/logo.jpg"
+                  alt="INSAF Mining and Mineral Logo"
+                  fill
+                  className="object-contain"
+                  sizes="48px"
+                />
               </div>
               <span className="font-bold text-white">INSAF</span>
             </div>
